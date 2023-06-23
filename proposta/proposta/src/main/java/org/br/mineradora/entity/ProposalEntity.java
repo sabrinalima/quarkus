@@ -17,6 +17,7 @@ public class ProposalEntity {
     @GeneratedValue
     private Long id;
 
+
     private String customer;
 
     @Column(name = "price_tonne")
