@@ -26,8 +26,21 @@ public class PersonController {
     public Response createPerson (PersonDTO person){
 
         try{
-
             personService.createNewPerson(person);
+            return Response.ok().build();
+
+        } catch (Exception e){
+            return Response.serverError().build();
+        }
+
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Response updatePerson (PersonDTO person, @PathParam("id") long id){
+
+        try{
+            personService.updatePerson(person,id);
             return Response.ok().build();
 
         } catch (Exception e){

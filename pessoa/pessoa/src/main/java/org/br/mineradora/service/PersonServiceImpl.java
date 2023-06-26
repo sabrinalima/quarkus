@@ -18,6 +18,7 @@ public class PersonServiceImpl implements PersonService{
 
         PersonEntity person = personRepository.findById(id);
         return PersonDTO.builder()
+                .personId(person.getId())
                 .nome(person.getNome())
                 .build();
 
@@ -28,6 +29,24 @@ public class PersonServiceImpl implements PersonService{
     public void createNewPerson(PersonDTO personDTO) {
         try{
             PersonEntity person = new PersonEntity();
+
+            person.setNome(personDTO.getNome());
+
+            personRepository.persist(person);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw  new RuntimeException();
+        }
+
+    }
+
+    @Override
+    @Transactional
+    public void updatePerson(PersonDTO personDTO, long id) {
+        try{
+
+            PersonEntity person = personRepository.findById(id);
 
             person.setNome(personDTO.getNome());
 

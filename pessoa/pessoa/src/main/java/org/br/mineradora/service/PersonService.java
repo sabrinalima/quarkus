@@ -10,6 +10,8 @@ public interface PersonService {
 
     void createNewPerson(PersonDTO personDTO);
 
+    void updatePerson(PersonDTO personDTO, long id);
+
     void removePerson(long id);
 
 }
