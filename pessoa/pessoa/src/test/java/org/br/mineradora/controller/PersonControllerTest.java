@@ -85,7 +85,7 @@ class PersonControllerTest {
     @Test
     void removePerson() {
         PersonEntity person = new PersonEntity();
-        person.setId(3L);
+        person.setId(5L);
         PersonDTO dto = PersonDTO.builder()
                 .personId(person.getId())
                 .nome(person.getNome())
