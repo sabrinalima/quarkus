@@ -44,14 +44,13 @@ class PersonControllerTest {
     void findPerson() {
 
         PersonEntity person = new PersonEntity();
-        person.setId(1L);
-        person.setNome("Sabrina");
+        person.setId(2L);
         PersonDTO dto = PersonDTO.builder()
-                .personId(1L)
-                .nome(person.getNome())
+                .personId(person.getId())
                 .build();
 
-        given().contentType(ContentType.JSON).param("id", dto.getPersonId())
+        given().contentType(ContentType.JSON)
+                .param("id", dto.getPersonId())
                 .when().get("/"+dto.getPersonId())
                 .then().statusCode(200);
 
@@ -61,14 +60,34 @@ class PersonControllerTest {
 
     @Test
     void updatePerson() {
+
+        PersonEntity person = new PersonEntity();
+        person.setId(2L);
+        person.setNome("Bernardo");
+        PersonDTO dto = PersonDTO.builder()
+                .personId(person.getId())
+                .nome(person.getNome())
+                .build();
+
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(dto)
+                .param("id", dto.getPersonId())
+                .when().put("/"+dto.getPersonId())
+                .then().statusCode(200);
+
+        verify(service).updatePerson(dto, dto.getPersonId());
+
+
     }
 
     @Test
     void removePerson() {
         PersonEntity person = new PersonEntity();
-        person.setId(1L);
+        person.setId(3L);
         PersonDTO dto = PersonDTO.builder()
-                .personId(1L)
+                .personId(person.getId())
                 .nome(person.getNome())
                 .build();
 
