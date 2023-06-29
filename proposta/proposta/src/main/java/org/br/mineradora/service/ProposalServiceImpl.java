@@ -68,7 +68,7 @@ public class ProposalServiceImpl implements ProposalService {
 
             return  ProposalDTO.builder()
                     .proposalId(proposalRepository.findByCustomer(proposal.getCustomer()).get().getId())
-                    .priceTonner(proposal.getPriceTonne())
+                    .priceTonne(proposal.getPriceTonne())
                     .customer(proposal.getCustomer())
                     .build();
 

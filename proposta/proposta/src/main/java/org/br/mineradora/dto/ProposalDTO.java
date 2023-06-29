@@ -17,6 +17,6 @@ public class ProposalDTO {
 
     private String customer;
 
-    private BigDecimal priceTonner;
+    private BigDecimal priceTonne;
 
 }
